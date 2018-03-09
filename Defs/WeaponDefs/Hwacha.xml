@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<!-- ========== Hwacha (Building) ========== -->
+
+	<ThingDef Name="BaseArrowArtillery" ParentName="BuildingBase" Abstract="True">
+		<thingClass>Building_TurretGun</thingClass>
+		<graphicData>
+			<texPath>Things/hwachabase</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<stealable>false</stealable>
+		<size>(4,4)</size>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<tickerType>Normal</tickerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Security</designationCategory>
+		<costStuffCount>100</costStuffCount>
+		<costList>
+			<Steel>50</Steel>
+			<Component>2</Component>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_Mannable">
+				<manWorkType>Violent</manWorkType>
+			</li>
+		</comps>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<WorkToBuild>1500</WorkToBuild>
+			<Mass>80</Mass>
+			<Beauty>-20</Beauty>
+		</statBases>
+		<building>
+			<turretBurstWarmupTime>3.5</turretBurstWarmupTime>
+			<turretBurstCooldownTime>50</turretBurstCooldownTime>
+			<buildingTags>
+				<li>Artillery</li>
+			</buildingTags>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>RecurveBow</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseArrowArtillery">
+		<defName>Turret_Hwacha</defName>
+		<label>Hwacha</label>
+		<description> A tribal piece of rocket artillery. It works by firing lots of arrows with primitive rocket motors attached to them in the general direction of the target. Not accurate in the slightest though.</description>
+		<building>
+			<turretGunDef>Artillery_Arrow_Hwacha</turretGunDef>
+			<turretTopGraphicPath>Things/hwachatop</turretTopGraphicPath>
+			<buildingTags>
+				<li>Artillery_BaseDestroyer</li>
+			</buildingTags>
+		</building>
+	</ThingDef>
+
+<!-- ========== Hwacha (Rocket Launcher) ========== -->
+
+	<ThingDef Name="BaseRocketWeapon" Abstract="True">
+		<category>Item</category>
+		<thingClass>ThingWithComps</thingClass>
+		<label>Artillery Error</label>
+		<useHitPoints>false</useHitPoints>
+		<equipmentType>Primary</equipmentType>
+		<tickerType>Never</tickerType>
+		<techLevel>Medieval</techLevel>
+		<destroyOnDrop>True</destroyOnDrop>
+		<canBeSpawningInventory>false</canBeSpawningInventory>
+		<menuHidden>True</menuHidden>
+		<tradeability>Never</tradeability>
+		<weaponTags>
+			<li>Artillery</li>
+		</weaponTags>
+		<comps>
+			<li>
+				<compClass>CompEquippable</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseRocketWeapon">
+		<defName>Artillery_Arrow_Hwacha</defName>
+		<label>Hwacha</label>
+		<description> Hwacha rack, launches arrows over walls and vast distances</description>
+		<weaponTags>
+			<li>Artillery_BaseDestroyer</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+				<hasStandardCommand>True</hasStandardCommand>
+				<defaultProjectile>Arrow_Volley</defaultProjectile>
+				<warmupTime>5</warmupTime>
+				<forcedMissRadius>3.5</forcedMissRadius>
+				<requireLineOfSight>false</requireLineOfSight>
+				<minRange>15</minRange>
+				<range>300</range>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<burstShotCount>25</burstShotCount>
+				<soundCast>hwacha_4</soundCast>
+				<muzzleFlashScale>24</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>True</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+
+
+</Defs>

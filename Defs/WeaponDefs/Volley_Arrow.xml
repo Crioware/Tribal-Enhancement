@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+<!-- ========== Bases - Don't Touch ========== -->
+
+  	<ThingDef Name="BaseProjectileNeolithic" Abstract="True">
+    	<category>Projectile</category>
+    	<tickerType>Normal</tickerType>
+    	<altitudeLayer>Projectile</altitudeLayer>
+    	<thingClass>Bullet</thingClass>
+    	<label>arrow</label>
+    	<useHitPoints>False</useHitPoints>
+    	<neverMultiSelect>True</neverMultiSelect>
+    	<graphicData>
+      		<shaderType>Transparent</shaderType>
+    	</graphicData>
+  	</ThingDef>
+
+<!-- ========== Volley Arrow (Used for the Hwacha) ========== -->
+
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>Arrow_Volley</defName>
+		<label>Volley Arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<speed>50</speed>
+		</projectile>
+	</ThingDef>
+
+
+</Defs>
+
+
+
+
+
