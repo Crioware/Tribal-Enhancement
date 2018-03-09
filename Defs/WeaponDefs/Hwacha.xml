@@ -30,10 +30,9 @@
 		<tickerType>Normal</tickerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<designationCategory>Security</designationCategory>
-		<costStuffCount>100</costStuffCount>
+		<costStuffCount>120</costStuffCount>
 		<costList>
-			<Steel>50</Steel>
-			<Component>2</Component>
+			<Steel>30</Steel>
 		</costList>
 		<comps>
 			<li Class="CompProperties_Forbiddable" />
