@@ -2,6 +2,84 @@
 <Defs>
 
   <ThingDef ParentName="BaseProjectileNeolithic">
+    <defName>Pilum_Thrown</defName>
+    <label>pilum</label>
+    <graphicData>
+      <texPath>Things/Projectile/Pilum</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>true</flyOverhead>
+      <damageDef>RangedStab</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <speed>44</speed>
+    </projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseWeaponNeolithic">
+    <defName>Pila</defName>
+    <label>pila</label>
+    <description>Pila are spears for throwing. They're awkward to use but even one hit can do heavy damage. Can be thrown over walls, although accuracy isn't guaranteed when doing so.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Pilum</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_BeatFire</soundInteract>
+    <costList>
+      <WoodLog>70</WoodLog>
+    </costList>
+    <statBases>
+      <WorkToMake>13000</WorkToMake>
+      <Mass>4</Mass>
+      <AccuracyTouch>0.91</AccuracyTouch>
+      <AccuracyShort>0.81</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.42</AccuracyLong>
+      <RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
+      <Weapon_Bulk>1.0</Weapon_Bulk>
+    </statBases>
+    <weaponTags>
+      <li>NeolithicRanged</li>
+      <li>NeolithicRangedHeavy</li>
+    </weaponTags>
+    <recipeMaker>
+      <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Pilum_Thrown</defaultProjectile>
+        <warmupTime>4.0</warmupTime>
+        <range>20</range>
+        <soundCast>Interact_BeatFire</soundCast>
+		<requireLineOfSight>false</requireLineOfSight>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseProjectileNeolithic">
     <defName>Arrow_Short</defName>
     <label>shortbow arrow</label>
     <graphicData>
@@ -31,10 +109,10 @@
       <WorkToMake>9000</WorkToMake>
       <Mass>0.8</Mass>
       <AccuracyTouch>0.89</AccuracyTouch>
-      <AccuracyShort>0.64</AccuracyShort>
-      <AccuracyMedium>0.41</AccuracyMedium>
+      <AccuracyShort>0.84</AccuracyShort>
+      <AccuracyMedium>0.58</AccuracyMedium>
       <AccuracyLong>0.22</AccuracyLong>
-      <RangedWeapon_Cooldown>1.66</RangedWeapon_Cooldown>
+      <RangedWeapon_Cooldown>1.45</RangedWeapon_Cooldown>
       <Weapon_Bulk>1.0</Weapon_Bulk>
     </statBases>
     <weaponTags>
@@ -53,7 +131,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Arrow_Short</defaultProjectile>
-        <warmupTime>1.35</warmupTime>
+        <warmupTime>1.05</warmupTime>
         <range>26</range>
         <soundCast>BowSmall</soundCast>
       </li>
@@ -100,10 +178,10 @@
       <WorkToMake>12000</WorkToMake>
       <Mass>0.85</Mass>
       <AccuracyTouch>0.90</AccuracyTouch>
-      <AccuracyShort>0.78</AccuracyShort>
+      <AccuracyShort>0.84</AccuracyShort>
       <AccuracyMedium>0.65</AccuracyMedium>
-      <AccuracyLong>0.35</AccuracyLong>
-      <RangedWeapon_Cooldown>1.66</RangedWeapon_Cooldown>
+      <AccuracyLong>0.45</AccuracyLong>
+      <RangedWeapon_Cooldown>1.05</RangedWeapon_Cooldown>
       <Weapon_Bulk>1.0</Weapon_Bulk>
     </statBases>
     <weaponTags>
@@ -116,14 +194,14 @@
         <li>FueledSmithy</li>
         <li>CraftingSpot</li>
       </recipeUsers>
-      <researchPrerequisite>AdvancedArchery</researchPrerequisite>
+      <researchPrerequisite>RecurveBow</researchPrerequisite>
     </recipeMaker>
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Arrow_Recurve</defaultProjectile>
-        <warmupTime>1.45</warmupTime>
+        <warmupTime>1.95</warmupTime>
         <range>30</range>
         <soundCast>BowRecurve</soundCast>
       </li>
@@ -171,9 +249,9 @@
       <Mass>1.2</Mass>
       <AccuracyTouch>0.93</AccuracyTouch>
       <AccuracyShort>0.85</AccuracyShort>
-      <AccuracyMedium>0.75</AccuracyMedium>
-      <AccuracyLong>0.50</AccuracyLong>
-      <RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>
+      <AccuracyMedium>0.80</AccuracyMedium>
+      <AccuracyLong>0.60</AccuracyLong>
+      <RangedWeapon_Cooldown>1.05</RangedWeapon_Cooldown>
       <Weapon_Bulk>1.0</Weapon_Bulk>
     </statBases>
     <weaponTags>
@@ -186,7 +264,7 @@
         <verbClass>Verb_Shoot</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <defaultProjectile>Arrow_Great</defaultProjectile>
-        <warmupTime>1.5</warmupTime>
+        <warmupTime>2.95</warmupTime>
         <range>34</range>
         <soundCast>BowLarge</soundCast>
       </li>
@@ -207,7 +285,7 @@
         <li>FueledSmithy</li>
         <li>CraftingSpot</li>
       </recipeUsers>
-      <researchPrerequisite>AdvancedArchery</researchPrerequisite>
+      <researchPrerequisite>RecurveBow</researchPrerequisite>
     </recipeMaker>
   </ThingDef>
 
