@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="PatchOperationReplace">
+	  <xpath>/Defs/ResearchProjectDef[defName = "RecurveBow"]</xpath>
+	  <value>
+		  <ResearchProjectDef>
+			<defName>RecurveBow</defName>
+			<label>advanced archery</label>
+			<description>Advanced understanding of ballistic techniques allow for production of advanced ranged weapons. The Recurve bow, Longbow, and Hwacha arrows can be built at a crafting spot or smithy. The Hwacha is a security structure comparable in function to the more advanced mortar. A single-use handheld version can also be made.</description>
+			<baseCost>1000</baseCost>
+			<techLevel>Neolithic</techLevel>
+			<researchViewX>1</researchViewX>
+			<researchViewY>5</researchViewY>
+		  </ResearchProjectDef>
+	  </value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+	  <xpath>/Defs/ThingDef[defName = "Bow_Great"]/recipeMaker/researchPrerequisite</xpath>
+	  <value>
+		<researchPrerequisite>RecurveBow</researchPrerequisite>
+	  </value>
+	</Operation>
+	
+	<Operation Class="PatchOperationRemove">
+	  <xpath>/Defs/ResearchProjectDef[defName = "Greatbows"]</xpath>
+	</Operation>
+</Patch>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <!-- ========== Nest of Bees (Handheld Hwacha) ========== -->
+
+  	<ThingDef ParentName="BaseProjectileNeolithic">
+  		<defName>HwachaRocketHandheld</defName>
+  		<label>Nest of Bees Rocket</label>
+  		<graphicData>
+  			<texPath>Things/Arrow_Small</texPath>
+  			<graphicClass>Graphic_Single</graphicClass>
+  		</graphicData>
+  		<projectile>
+  			<flyOverhead>false</flyOverhead>
+  			<damageDef>Arrow</damageDef>
+  			<damageAmountBase>20</damageAmountBase>
+  			<speed>60</speed>
+  		</projectile>
+  	</ThingDef>
+
+  	<ThingDef ParentName="BaseWeaponNeolithic">
+  		<defName>HwachaHandheld</defName>
+  		<label>Nest of Bees</label>
+  		<description>Handheld hwatcha. Fires a burst of 15 rockets. Such a pain to reload that you're better off just making a new one.</description>
+  		<graphicData>
+  			<texPath>Things/TWHwachaHandheld</texPath>
+  			<graphicClass>Graphic_Single</graphicClass>
+  		</graphicData>
+  		<soundInteract>BowSmall</soundInteract>
+  		<costList>
+  			<WoodLog>50</WoodLog>
+  			<Steel>15</Steel>
+  		</costList>
+  		<statBases>
+  			<WorkToMake>9000</WorkToMake>
+  			<Mass>7</Mass>
+  			<AccuracyTouch>0.60</AccuracyTouch>
+  			<AccuracyShort>0.75</AccuracyShort>
+  			<AccuracyMedium>0.55</AccuracyMedium>
+  			<AccuracyLong>0.32</AccuracyLong>
+  			<RangedWeapon_Cooldown>1.65</RangedWeapon_Cooldown>
+  			<Weapon_Bulk>1.5</Weapon_Bulk>
+  		</statBases>
+  		<weaponTags>
+  			<li>NeolithicRanged</li>
+  		</weaponTags>
+  		<recipeMaker>
+  			<recipeUsers>
+  				<li>ElectricSmithy</li>
+  				<li>FueledSmithy</li>
+  				<li>CraftingSpot</li>
+  			</recipeUsers>
+			<researchPrerequisite>RecurveBow</researchPrerequisite>
+  		</recipeMaker>
+  		<verbs>
+  			<li>
+  				<verbClass>Verb_ShootOneUse</verbClass>
+  				<hasStandardCommand>true</hasStandardCommand>
+  				<defaultProjectile>HwachaRocketHandheld</defaultProjectile>
+  				<warmupTime>3</warmupTime>
+				<forcedMissRadius>2.5</forcedMissRadius>
+  				<range>32</range>
+  				<burstShotCount>15</burstShotCount>
+  				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+  				<soundCast>TWHwachaHandheld</soundCast>
+  			</li>
+  		</verbs>
+  		<tools>
+  			<li>
+  				<capacities>
+  					<li>Blunt</li>
+  				</capacities>
+  				<power>7</power>
+  				<cooldownTime>1.65</cooldownTime>
+  			</li>
+  		</tools>
+  	</ThingDef>
+
+	<!-- ========== Hwacha (Structure, not weapon) ========== -->
+
+	<ThingDef Name="BaseArtilleryArrow" ParentName="BuildingBase" Abstract="True">
+		<thingClass>Building_TurretGun</thingClass>
+		<graphicData>
+			<texPath>Things/TWHwachaBase</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<stealable>false</stealable>
+		<size>(2,2)</size>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<tickerType>Normal</tickerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Security</designationCategory>
+		<costStuffCount>120</costStuffCount>
+		<costList>
+			<Steel>30</Steel>
+		</costList>
+		<inspectorTabs>
+		  <li>ITab_TWRockets</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_Mannable">
+				<manWorkType>Violent</manWorkType>
+			</li>
+		</comps>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<WorkToBuild>1500</WorkToBuild>
+			<Mass>80</Mass>
+			<Beauty>-20</Beauty>
+		</statBases>
+		<building>
+			<turretBurstWarmupTime>3.5</turretBurstWarmupTime>
+			<turretBurstCooldownTime>40</turretBurstCooldownTime>
+			<buildingTags>
+				<li>Artillery</li>
+			</buildingTags>
+		</building>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>RecurveBow</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseArtilleryArrow">
+		<defName>Turret_Hwacha</defName>
+		<label>Hwacha</label>
+		<description>Fires a withering storm of rocket-propelled arrows over long distances. Ineffective against small groups but the sight is terrifying to behold for both armies.</description>
+		<building>
+			<turretGunDef>Artillery_Arrow_Hwacha</turretGunDef>
+			<turretTopGraphicPath>Things/TWHwachaTop</turretTopGraphicPath>
+			<buildingTags>
+				<li>Artillery_BaseDestroyer</li>
+			</buildingTags>
+		</building>
+	</ThingDef>
+
+	<!-- ========== Volley Arrow (Used for the Hwacha) ========== -->
+
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>HwachaRocket</defName>
+		<label>Hwacha Rocket</label>
+		<graphicData>
+			<texPath>Things/TWHwachaRocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>true</flyOverhead>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+
+<!-- ========== Hwacha (Weapon, not structure) ========== -->
+
+	<ThingDef Name="BaseRocketWeapon" Abstract="True">
+		<category>Item</category>
+		<thingClass>ThingWithComps</thingClass>
+		<label>Artillery Error</label>
+		<useHitPoints>false</useHitPoints>
+		<equipmentType>Primary</equipmentType>
+		<tickerType>Never</tickerType>
+		<techLevel>Neolithic</techLevel>
+		<destroyOnDrop>True</destroyOnDrop>
+		<canBeSpawningInventory>false</canBeSpawningInventory>
+		<menuHidden>True</menuHidden>
+		<tradeability>Never</tradeability>
+		<weaponTags>
+			<li>Artillery</li>
+		</weaponTags>
+    <comps>
+      <li>
+        <compClass>CompEquippable</compClass>
+      </li>
+      <li Class="CompProperties_ChangeableProjectile" />
+    </comps>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>HwachaRockets</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>HwachaRockets</li>
+          </categories>
+          <exceptedThingDefs>
+            <li>HwachaRocketFire</li>
+            <li>HwachaRocketExplosive</li>
+          </exceptedThingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseRocketWeapon">
+		<defName>Artillery_Arrow_Hwacha</defName>
+		<label>Hwacha</label>
+		<description>Fires a withering storm of rocket-propelled arrows over long distances. Ineffective against small groups but the sight is terrifying to behold for both armies.</description>
+		<weaponTags>
+			<li>Artillery_BaseDestroyer</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+				<hasStandardCommand>True</hasStandardCommand>
+				<defaultProjectile>HwachaRocket</defaultProjectile>
+				<warmupTime>5</warmupTime>
+				<forcedMissRadius>3.5</forcedMissRadius>
+				<requireLineOfSight>false</requireLineOfSight>
+				<minRange>15</minRange>
+				<range>300</range>
+				<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+				<burstShotCount>30</burstShotCount>
+				<soundCast>TWHwacha</soundCast>
+				<muzzleFlashScale>24</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>True</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+</Defs>
